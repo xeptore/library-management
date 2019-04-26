@@ -3,5 +3,5 @@ project (main)
 
 add_library(Book book.h book.cpp)
 
-add_executable(main main.cpp)
+add_executable (main main.cpp)
 target_link_libraries (main Book)
