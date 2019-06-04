@@ -5,7 +5,7 @@
       "name": "build and debug",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceRoot}/bin/main.o",
+      "program": "${workspaceRoot}/build/bin/lib",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
