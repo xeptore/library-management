@@ -3,6 +3,7 @@
 
 using namespace std;
 
+
 void log(const string severity, const string message)
 {
     cout << "[ " << severity << " ] : " << message << endl;
