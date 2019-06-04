@@ -61,6 +61,12 @@ string promptString(const string question)
 {
     string input;
     __prompt(question);
+
+    // there is a problem using getline() function
+    // which happens if `cin` was called right before calling getline()
+    // and getline() thinks that entered `\n` after `cin` is telling it stop reading input stream,
+    // by ignoring `\n` charachter, we make sure the user __really__ inputs anything.
+    // read more at: https://mathbits.com/MathBits/CompSci/APstrings/APgetline.html.
     getline(cin, input);
     if (input.length() != 0)
     {
