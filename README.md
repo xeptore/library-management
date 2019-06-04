@@ -41,7 +41,7 @@ I had a problem ( another one :) ) in **circular library linking** which _someho
 This blog post and this questions ([1](https://stackoverflow.com/questions/30223453/c-circular-dependency-in-header-files) & [2](https://stackoverflow.com/questions/39722036/circular-dependencies-between-c-classes)) helped me solve it using combination of _forward declaration_ and _pointer type class members_.  
 * [Standard Library Reference](http://www.cplusplus.com/reference/string/to_string/):
 Simple `std::to_string()` function used to convert `int` to `std::string`.
-* [This Blog Post](https://mathbits.com/MathBits/CompSci/APstrings/APgetline.htm):
+* [This](https://www.hackerearth.com/practice/notes/validating-user-input-in-c/) and [this](https://mathbits.com/MathBits/CompSci/APstrings/APgetline.htm) blog posts:
 I had a problem using `std::getline()` function, which receives empty string when is was used after `cin`. I found this blog post and [this](https://stackoverflow.com/questions/5739937/using-getlinecin-s-after-cin) stackoverflow q/a useful in solving my problem.  
 * [gologger](https://github.com/xeptore/gologger):  
 My own project. Used for copying ugly codes to colorize console outputs.  
