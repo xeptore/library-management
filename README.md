@@ -36,7 +36,7 @@ Here are links to documentation and blog posts i've used till now:
 Actually Step 2 for adding libraries (models and helper functions).
 * [This Blog Post](http://derekmolloy.ie/hello-world-introductions-to-cmake/):  
 Very helpful blog post i've found that helped me _finally_ configure CMake.
-* [This Blog Post](http://gernotklingler.com/blog/care-include-dependencies-cpp-keep-minimum/):  
+* [This Blog Post](http://gernotklingler.com/blog/care-include-dependencies-cpp-keep-minimum/) and [This Reference Page](https://en.cppreference.com/w/cpp/language/class):  
 I had a problem ( another one :) ) in **circular library linking** which _somehow_ was same as what i had in Golang when i first started it.  
 This blog post and this questions ([1](https://stackoverflow.com/questions/30223453/c-circular-dependency-in-header-files) & [2](https://stackoverflow.com/questions/39722036/circular-dependencies-between-c-classes)) helped me solve it using combination of _forward declaration_ and _pointer type class members_.  
 * [Standard Library Reference](http://www.cplusplus.com/reference/string/to_string/):
