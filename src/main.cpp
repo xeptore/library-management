@@ -20,46 +20,51 @@ int main()
     auto store = new Store();
 
     banner();
-    help();
-    int action;
-    while ((action = getaction()) == -1)
+
+    while (true)
     {
-        error("Invalid input.");
-        error("Just enter number of the option you want.");
         help();
+        int action = 0;
+        while ((action = getaction()) == -1)
+        {
+            error("Invalid input.");
+            error("Just enter number of the option you want.");
+            help();
+        }
+
+        println();
+
+        switch (action)
+        {
+        case 0:
+        {
+            exit(0);
+        }
+        case 1:
+        {
+            auto member = addNewMember(store);
+            if (member != NULL)
+            {
+                println();
+                ok("New member added successfully:");
+                printNewMemberInformation(member);
+            }
+            else
+            {
+                error("Unable to register member.");
+                error("Try again, please.");
+            }
+            break;
+        }
+        case 3:
+        {
+            borrowBookToMember(store);
+        }
+        default:
+            break;
+        }
     }
 
-    println();
-
-    switch (action)
-    {
-    case 0:
-    {
-        exit(0);
-    }
-    case 1:
-    {
-        auto member = addNewMember(store);
-        if (member != NULL)
-        {
-            println();
-            ok("New member added successfully:");
-            printNewMemberInformation(member);
-        }
-        else
-        {
-            error("Unable to register member.");
-            error("Try again, please.");
-        }
-        break;
-    }
-    case 3:
-    {
-        borrowBookToMember(store);
-    }
-    default:
-        break;
-    }
     return 0;
 }
 
