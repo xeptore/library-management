@@ -18,9 +18,13 @@ include_directories (include)
 
 # adds libraries
 add_library (Member include/member.h src/member.cpp)
-add_library (Book include/book.h src/book.cpp)
-add_library (Store include/store.h src/store.cpp)
-add_library (Util include/util.h src/util.cpp)
+target_link_libraries (main Member)
 
-# links previously added libraries to main
-target_link_libraries (main Util Book Store Member)
+add_library (Book include/book.h src/book.cpp)
+target_link_libraries (main Book)
+
+add_library (Store include/store.h src/store.cpp)
+target_link_libraries (main Store)
+
+add_library (Util include/util.h src/util.cpp)
+target_link_libraries (main Util)
