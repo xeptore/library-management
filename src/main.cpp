@@ -16,6 +16,7 @@ void addNewMember(Store *store);
 void addNewBook(Store *store);
 void borrowBookToMember(Store *store);
 void takeBackBookFromMember(Store *store);
+void listMemberBorrowedBooks(Store *store);
 
 int main()
 {
@@ -60,6 +61,11 @@ int main()
         case 4:
         {
             takeBackBookFromMember(store);
+            break;
+        }
+        case 5:
+        {
+            listMemberBorrowedBooks(store);
             break;
         }
         default:
@@ -194,8 +200,8 @@ void borrowBookToMember(Store *store)
 
     book->borrowTo(member);
 
-    ok("Book with ISBN (" + book->getISBN() + ")");
-    ok("has been successfully borrowed to member with ID (" + member->getId() + ").");
+    ok("Book with ISBN (" + yellowBold(book->getISBN()) + ")");
+    ok("has been successfully borrowed to member with ID (" + yellowBold(member->getId()) + ").");
 
     string s = "";
     if (book->getRemainingCount() > 1)
@@ -203,7 +209,7 @@ void borrowBookToMember(Store *store)
         s = "s";
     }
 
-    ok("Number of remaining book" + s + ": " + to_string(book->getRemainingCount()));
+    ok("Number of remaining book" + s + ": " + yellowBold(to_string(book->getRemainingCount())));
 
     return;
 }
@@ -236,9 +242,35 @@ void takeBackBookFromMember(Store *store)
 
     book->takeBackFrom(member);
 
-    ok("Book with ISBN (" + book->getISBN() + ")");
-    ok("has been successfully taken back from member with ID (" + member->getId() + ").");
-    ok("Number of book in library:" + to_string(book->getRemainingCount()));
+    ok("Book with ISBN (" + yellowBold(book->getISBN()) + ")");
+    ok("has been successfully taken back from member with ID (" + yellowBold(member->getId()) + ").");
+    ok("Number of book in library:" + yellowBold(to_string(book->getRemainingCount())));
 
     return;
+}
+
+void listMemberBorrowedBooks(Store *store)
+{
+    info("Enter requested items to see a list of books borrowed by a member:");
+
+    auto memberId = promptString("Enter member ID:");
+    auto member = store->findMemberById(memberId);
+    if (member == NULL)
+    {
+        error("Member with entered ID is not registerd.");
+        return;
+    }
+
+    println();
+    info("Member with ID (" + yellowBold(member->getId()) + ") has borrowed " + yellowBold(to_string(member->getBorrowedBooksCount())) + " books.");
+    println();
+    info("List of books:");
+
+    auto books = member->getBorrowedBooks();
+
+    for (auto book = books.begin(); book != books.end(); book++)
+    {
+        printBorrowedBookInformation(*book);
+    }
+    println();
 }
