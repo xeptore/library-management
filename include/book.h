@@ -31,11 +31,11 @@ class Book
     bool canBeBorrowed();
     bool canBeBorrowedTo(Member *member);
 
-    void setName(string name);
-    void setPublishYear(uint publishYear);
-    void setISBN(string isbn);
-    void setAuthor(string author);
-    void setTotal(uint total);
+    Book *setName(string name);
+    Book *setPublishYear(uint publishYear);
+    Book *setISBN(string isbn);
+    Book *setAuthor(string author);
+    Book *setTotal(uint total);
     void borrowTo(Member *member);
     void unborrowFrom(Member *member);
 };
