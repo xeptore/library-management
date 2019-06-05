@@ -76,7 +76,7 @@ void help()
     println("[ " + yellow("5") + " ] " + "Show a list of borrowed books from a member");
     println("[ " + yellow("6") + " ] " + "Show a list of books in the library");
     println("[ " + yellow("7") + " ] " + "Show a list of books in the library");
-    println("[ " + grey("0") + " ] " + "Exit");
+    println("[ " + grey("0")   + " ] " + "Exit");
     cout << endl;
 }
 
