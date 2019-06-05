@@ -27,10 +27,10 @@ class Member
     uint getBorrowedBooksCount();
     bool hasBorrowedBook(Book *book);
 
-    void setFirstName(string firstName);
-    void setLastName(string lastName);
-    void setEntranceYear(uint entranceYear);
-    void setId(string id);
+    Member *setFirstName(string firstName);
+    Member *setLastName(string lastName);
+    Member *setEntranceYear(uint entranceYear);
+    Member *setId(string id);
     uint addBorrowedBook(Book *book);
     bool removeBorrowedBook(Book *book);
 };

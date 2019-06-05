@@ -60,24 +60,28 @@ bool Member::hasBorrowedBook(Book *book)
     return false;
 }
 
-void Member::setFirstName(string firstName)
+Member *Member::setFirstName(string firstName)
 {
     this->firstName = firstName;
+    return this;
 }
 
-void Member::setLastName(string lastName)
+Member *Member::setLastName(string lastName)
 {
     this->lastName = lastName;
+    return this;
 }
 
-void Member::setEntranceYear(uint entranceYear)
+Member *Member::setEntranceYear(uint entranceYear)
 {
     this->entranceYear = entranceYear;
+    return this;
 }
 
-void Member::setId(string id)
+Member *Member::setId(string id)
 {
     this->id = id;
+    return this;
 }
 
 uint Member::addBorrowedBook(Book *book)
