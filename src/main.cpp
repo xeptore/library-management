@@ -136,6 +136,12 @@ void addNewMember(Store *store)
     id = promptString("Student ID:");
     entranceYear = (uint)promptInt("Entrance Year:");
 
+    if (store->memberExists(id))
+    {
+        error("Member with ID (" + yellowBold(id) + ") already registered.");
+        return;
+    }
+
     auto member = new Member(id);
     member->setEntranceYear(entranceYear)
         ->setFirstName(firstName)
