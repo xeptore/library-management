@@ -19,6 +19,7 @@ void borrowBookToMember(Store *store);
 void takeBackBookFromMember(Store *store);
 void listMemberBorrowedBooks(Store *store);
 void listBooks(Store *store);
+void listMembers(Store *store);
 
 int main()
 {
@@ -74,6 +75,11 @@ int main()
         case 6:
         {
             listBooks(store);
+            break;
+        }
+        case 7:
+        {
+            listMembers(store);
             break;
         }
         default:
@@ -312,6 +318,19 @@ void listBooks(Store *store)
     for (auto book = books.begin(); book != books.end(); book++)
     {
         printRegisteredBookInformation(*book);
+        println();
+    }
+}
+
+void listMembers(Store *store)
+{
+    info("Listing all registered books in the library until now:");
+
+    auto members = store->getMembers();
+
+    for (auto member = members.begin(); member != members.end(); member++)
+    {
+        printRegisteredMemberInformation(*member);
         println();
     }
 }
