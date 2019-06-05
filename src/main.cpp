@@ -162,6 +162,12 @@ void addNewBook(Store *store)
     publishYear = (uint)promptInt("Publish Year:");
     total = (uint)promptInt("Total Number:");
 
+    if (store->bookExists(isbn))
+    {
+        error("Book with ISBN (" + yellowBold(isbn) + ") already registered.");
+        return;
+    }
+
     auto book = new Book();
     book->setName(name)
         ->setAuthor(author)
