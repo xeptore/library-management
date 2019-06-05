@@ -41,6 +41,12 @@ string red(const string title)
     return __colorize(red, title);
 }
 
+string darkRed(const string str)
+{
+    const uint darkred = 88;
+    return __colorize(darkred, str);
+}
+
 string green(const string title)
 {
     const uint green = 10;
@@ -81,6 +87,12 @@ string redBold(const string str)
 {
     const uint red = 9;
     return __colorize(red, str, true);
+}
+
+string darkRedBold(const string str)
+{
+    const uint darkred = 88;
+    return __colorize(darkred, str, true);
 }
 
 string greenBold(const string str)
