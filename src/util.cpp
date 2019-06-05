@@ -220,37 +220,51 @@ void println()
 
 void printNewMemberInformation(Member *member)
 {
-    println(blueBold("ID") + ":" + __space(15 - 2) + member->getId());
-    println(blueBold("First Name") + ":" + __space(15 - 10) + member->getFirstName());
-    println(blueBold("Last Name") + ":" + __space(15 - 9) + member->getLastName());
-    println(blueBold("Entrance Year") + ":" + __space(15 - 13) + to_string(member->getEntranceYear()));
+    const uint maxLen = 15;
+    println(blueBold("ID") + ":" + __space(maxLen - 2) + member->getId());
+    println(blueBold("First Name") + ":" + __space(maxLen - 10) + member->getFirstName());
+    println(blueBold("Last Name") + ":" + __space(maxLen - 9) + member->getLastName());
+    println(blueBold("Entrance Year") + ":" + __space(maxLen - 13) + to_string(member->getEntranceYear()));
 }
 
 void printNewBookInformation(Book *book)
 {
-    println(blueBold("Name") + ":" + __space(15 - 4) + book->getName());
-    println(blueBold("Author Name") + ":" + __space(15 - 11) + book->getAuthor());
-    println(blueBold("ISBN") + ":" + __space(15 - 4) + book->getISBN());
-    println(blueBold("Publish Year") + ":" + __space(15 - 12) + to_string(book->getPublishYear()));
-    println(blueBold("Total") + ":" + __space(15 - 5) + to_string(book->getTotal()));
+    const uint maxLen = 15;
+    println(blueBold("Name") + ":" + __space(maxLen - 4) + book->getName());
+    println(blueBold("Author Name") + ":" + __space(maxLen - 11) + book->getAuthor());
+    println(blueBold("ISBN") + ":" + __space(maxLen - 4) + book->getISBN());
+    println(blueBold("Publish Year") + ":" + __space(maxLen - 12) + to_string(book->getPublishYear()));
+    println(blueBold("Total") + ":" + __space(maxLen - 5) + to_string(book->getTotal()));
 }
 
 void printBorrowedBookInformation(Book *book)
 {
-    println(pinkBold("Name") + ":" + __space(15 - 4) + book->getName());
-    println(pinkBold("Author Name") + ":" + __space(15 - 11) + book->getAuthor());
-    println(pinkBold("ISBN") + ":" + __space(15 - 4) + book->getISBN());
-    println(pinkBold("Publish Year") + ":" + __space(15 - 12) + to_string(book->getPublishYear()));
-    println(pinkBold("Total") + ":" + __space(15 - 5) + to_string(book->getTotal()));
+    const uint maxLen = 15;
+    println(pinkBold("Name") + ":" + __space(maxLen - 4) + book->getName());
+    println(pinkBold("Author Name") + ":" + __space(maxLen - 11) + book->getAuthor());
+    println(pinkBold("ISBN") + ":" + __space(maxLen - 4) + book->getISBN());
+    println(pinkBold("Publish Year") + ":" + __space(maxLen - 12) + to_string(book->getPublishYear()));
+    println(pinkBold("Total") + ":" + __space(maxLen - 5) + to_string(book->getTotal()));
 }
 
 void printRegisteredBookInformation(Book *book)
 {
-    println(greyBold("Name") + ":" + __space(15 - 4) + book->getName());
-    println(greyBold("Author Name") + ":" + __space(15 - 11) + book->getAuthor());
-    println(greyBold("ISBN") + ":" + __space(15 - 4) + book->getISBN());
-    println(greyBold("Publish Year") + ":" + __space(15 - 12) + to_string(book->getPublishYear()));
-    println(greyBold("Total") + ":" + __space(15 - 5) + to_string(book->getTotal()));
-    println(greyBold("Borrowed") + ":" + __space(15 - 8) + to_string(book->getTotal() - book->getRemainingCount()));
-    println(greyBold("Remaining") + ":" + __space(15 - 9) + to_string(book->getRemainingCount()));
+    const uint maxLen = 15;
+    println(blueBold("Name") + ":" + __space(maxLen - 4) + book->getName());
+    println(blueBold("Author Name") + ":" + __space(maxLen - 11) + book->getAuthor());
+    println(blueBold("ISBN") + ":" + __space(maxLen - 4) + book->getISBN());
+    println(blueBold("Publish Year") + ":" + __space(maxLen - 12) + to_string(book->getPublishYear()));
+    println(blueBold("Total") + ":" + __space(maxLen - 5) + to_string(book->getTotal()));
+    println(blueBold("Borrowed") + ":" + __space(maxLen - 8) + to_string(book->getTotal() - book->getRemainingCount()));
+    println(blueBold("Remaining") + ":" + __space(maxLen - 9) + to_string(book->getRemainingCount()));
+}
+
+void printRegisteredMemberInformation(Member *member)
+{
+    const uint maxLen = 27;
+    println(blueBold("ID") + ":" + __space(maxLen - 2) + member->getId());
+    println(blueBold("First Name") + ":" + __space(maxLen - 10) + member->getFirstName());
+    println(blueBold("Last Name") + ":" + __space(maxLen - 9) + member->getLastName());
+    println(blueBold("Entrance Year") + ":" + __space(maxLen - 13) + to_string(member->getEntranceYear()));
+    println(blueBold("Number of Borrowed Books") + ":" + __space(maxLen - 24) + to_string(member->getBorrowedBooksCount()));
 }
