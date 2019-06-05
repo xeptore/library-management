@@ -12,7 +12,8 @@ void banner();
 void help();
 int getaction();
 
-Member *addNewMember(Store *store);
+void addNewMember(Store *store);
+void addNewBook(Store *store);
 void borrowBookToMember(Store *store);
 void takeBackBookFromMember(Store *store);
 
@@ -43,27 +44,23 @@ int main()
         }
         case 1:
         {
-            auto member = addNewMember(store);
-            if (member != NULL)
-            {
-                println();
-                ok("New member added successfully:");
-                printNewMemberInformation(member);
-            }
-            else
-            {
-                error("Unable to register member.");
-                error("Try again, please.");
-            }
+            addNewMember(store);
+            break;
+        }
+        case 2:
+        {
+            addNewBook(store);
             break;
         }
         case 3:
         {
             borrowBookToMember(store);
+            break;
         }
         case 4:
         {
             takeBackBookFromMember(store);
+            break;
         }
         default:
             break;
@@ -111,7 +108,7 @@ int getaction()
     return action;
 }
 
-Member *addNewMember(Store *store)
+void addNewMember(Store *store)
 {
     string firstName, lastName, id;
     uint entranceYear;
@@ -131,11 +128,42 @@ Member *addNewMember(Store *store)
 
     store->addMember(member);
 
-    return member;
+    println();
+    ok("New member with following information was added successfully:");
+    printNewMemberInformation(member);
+}
+
+void addNewBook(Store *store)
+{
+    string name, author, isbn;
+    uint publishYear, total;
+
+    info("Enter new Book information:");
+
+    name = promptString("Name:");
+    author = promptString("Author name:");
+    isbn = promptString("ISBN:");
+    publishYear = (uint)promptInt("Publish Year:");
+    total = (uint)promptInt("Total Number:");
+
+    auto book = new Book();
+    book->setName(name)
+        ->setAuthor(author)
+        ->setISBN(isbn)
+        ->setPublishYear(publishYear)
+        ->setTotal(total);
+
+    store->addBook(book);
+
+    println();
+    ok("New book with following information was added successfully:");
+    printNewBookInformation(book);
 }
 
 void borrowBookToMember(Store *store)
 {
+    info("Enter requested items to borrow a book:");
+
     auto isbn = promptString("Enter book ISBN:");
     auto book = store->findBookByISBN(isbn);
     if (book == NULL)
@@ -182,6 +210,8 @@ void borrowBookToMember(Store *store)
 
 void takeBackBookFromMember(Store *store)
 {
+    info("Enter requested items to take back a book:");
+
     auto memberId = promptString("Enter member ID:");
     auto member = store->findMemberById(memberId);
     if (member == NULL)
