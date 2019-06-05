@@ -74,29 +74,34 @@ bool Book::canBeBorrowedTo(Member *member)
 }
 
 
-void Book::setName(string name)
+Book *Book::setName(string name)
 {
     this->name = name;
+    return this;
 }
 
-void Book::setPublishYear(uint publishYear)
+Book *Book::setPublishYear(uint publishYear)
 {
     this->publishYear = publishYear;
+    return this;
 }
 
-void Book::setISBN(string isbn)
+Book *Book::setISBN(string isbn)
 {
     this->isbn = isbn;
+    return this;
 }
 
-void Book::setAuthor(string author)
+Book *Book::setAuthor(string author)
 {
     this->author = author;
+    return this;
 }
 
-void Book::setTotal(uint total)
+Book *Book::setTotal(uint total)
 {
     this->total = total;
+    return this;
 }
 
 void Book::borrowTo(Member *member)
