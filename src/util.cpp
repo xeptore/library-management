@@ -59,6 +59,12 @@ string magenta(const string title)
     return __colorize(magenta, title);
 }
 
+string pink(const string str)
+{
+    const uint pink = 171;
+    return __colorize(pink, str);
+}
+
 string yellow(const string title)
 {
     const uint yellow = 226;
@@ -93,6 +99,12 @@ string magentaBold(const string str)
 {
     const uint magenta = 93;
     return __colorize(magenta, str, true);
+}
+
+string pinkBold(const string str)
+{
+    const uint pink = 171;
+    return __colorize(pink, str, true);
 }
 
 string yellowBold(const string str)
@@ -213,9 +225,9 @@ void printNewBookInformation(Book *book)
 
 void printBorrowedBookInformation(Book *book)
 {
-    println(magentaBold("Name") + ":" + __space(15 - 4) + book->getName());
-    println(magentaBold("Author Name") + ":" + __space(15 - 11) + book->getAuthor());
-    println(magentaBold("ISBN") + ":" + __space(15 - 4) + book->getISBN());
-    println(magentaBold("Publish Year") + ":" + __space(15 - 12) + to_string(book->getPublishYear()));
-    println(magentaBold("Total") + ":" + __space(15 - 5) + to_string(book->getTotal()));
+    println(pinkBold("Name") + ":" + __space(15 - 4) + book->getName());
+    println(pinkBold("Author Name") + ":" + __space(15 - 11) + book->getAuthor());
+    println(pinkBold("ISBN") + ":" + __space(15 - 4) + book->getISBN());
+    println(pinkBold("Publish Year") + ":" + __space(15 - 12) + to_string(book->getPublishYear()));
+    println(pinkBold("Total") + ":" + __space(15 - 5) + to_string(book->getTotal()));
 }
