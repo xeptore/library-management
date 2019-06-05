@@ -18,6 +18,8 @@
       "type": "shell",
       "command": "cmake",
       "args": [
+        "-B",
+        "${workspaceFolder}/build",
         "-DCMAKE_BUILD_TYPE=Debug",
         "CMakeLists.txt"
       ],
