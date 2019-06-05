@@ -91,9 +91,7 @@ void help()
 
 int getaction()
 {
-    print("What can i do for you: ");
-    int action;
-    cin >> action;
+    auto action = promptInt("What can i do for you:");
     if (cin.fail() || action > 7 || action < 0)
     {
         cin.clear();
