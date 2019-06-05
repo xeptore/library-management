@@ -26,4 +26,11 @@ string magenta(const string str);
 string yellow(const string str);
 string blue(const string str);
 
+string redBold(const string str);
+string greenBold(const string str);
+string greyBold(const string str);
+string magentaBold(const string str);
+string yellowBold(const string str);
+string blueBold(const string str);
+
 void printNewMemberInformation(Member *member);
