@@ -181,6 +181,7 @@ double promptDouble(const string question)
 
 void error(const string message)
 {
+    cout << endl;
     const string title = "ERROR";
     __log(redBold(title), message);
 }
