@@ -10,15 +10,17 @@ using namespace std;
 
 void banner();
 void help();
-uint getaction();
+int getaction();
 
-bool addNewMember();
+Member *addNewMember(Store *store);
 
 int main() {
+    auto store = new Store();
+
     banner();
     help();
-    uint action;
-    while ((action = getaction()) == 0)
+    int action;
+    while ((action = getaction()) == -1)
     {
         error("Invalid input.");
         error("Just enter number of the option you want.");
@@ -27,10 +29,23 @@ int main() {
 
     switch (action)
     {
+        case 0: {
+            exit(0);
+        }
         case 1:
         {
-            addNewMember();
-            ok("New member added successfully");
+            auto member = addNewMember(store);
+            if (member != NULL)
+            {
+                println();
+                ok("New member added successfully:");
+                printNewMemberInformation(member);
+            }
+            else
+            {
+                error("Unable to register member.");
+                error("Try again, please.");
+            }
             break;
         }
         default:
@@ -42,42 +57,64 @@ int main() {
 void banner()
 {
     cout << endl;
-    cout << "  " << "******************************************" << endl;
-    cout << "  " << "*                                        *" << endl;
-    cout << "  " << "*         Library Management App         *" << endl;
-    cout << "  " << "*                                        *" << endl;
-    cout << "  " << "******************************************" << endl;
+    println("******************************************");
+    println("*                                        *");
+    println("*         Library Management App         *");
+    println("*                                        *");
+    println("******************************************");
+    cout << endl;
 }
 
 void help()
 {
-    cout << endl << endl;
-    cout << "  Choose one the following options:" << endl;
-    cout << "  " << "[ " << yellow("1") << " ] " << "Add a new member" << endl;
-    cout << "  " << "[ " << yellow("2") << " ] " << "Add a new book to library" << endl;
-    cout << "  " << "[ " << yellow("3") << " ] " << "Borrow a book to a member" << endl;
-    cout << "  " << "[ " << yellow("4") << " ] " << "Unborrow a book from a member" << endl;
-    cout << "  " << "[ " << yellow("5") << " ] " << "Show a list of borrowed books from a member" << endl;
-    cout << "  " << "[ " << yellow("6") << " ] " << "Show a list of books in the library" << endl;
-    cout << "  " << "[ " << yellow("7") << " ] " << "Show a list of books in the library" << endl;
+    cout << endl;
+    println("Choose one the following options:");
+    println("[ " + yellow("1") + " ] " + "Add a new member");
+    println("[ " + yellow("2") + " ] " + "Add a new book to library");
+    println("[ " + yellow("3") + " ] " + "Borrow a book to a member");
+    println("[ " + yellow("4") + " ] " + "Unborrow a book from a member");
+    println("[ " + yellow("5") + " ] " + "Show a list of borrowed books from a member");
+    println("[ " + yellow("6") + " ] " + "Show a list of books in the library");
+    println("[ " + yellow("7") + " ] " + "Show a list of books in the library");
+    println("[ " + grey("0") + " ] " + "Exit");
     cout << endl;
 }
 
-uint getaction()
+int getaction()
 {
-    cout << "  " << "What can i do for you: ";
-    uint action;
+    print("What can i do for you: ");
+    int action;
     cin >> action;
-    if (cin.fail() || action > 7 || action < 1)
+    if (cin.fail() || action > 7 || action < 0)
     {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        return 0;
+        return -1;
     }
     return action;
 }
 
-bool addNewMember()
+Member *addNewMember(Store *store)
 {
-    return true;
+    string firstName, lastName, id;
+    uint entranceYear;
+
+    println();
+    info("Enter new member information:");
+
+    firstName = promptString("First Name:");
+    lastName = promptString("Last Name:");
+    id = promptString("Student ID:");
+    entranceYear = (uint) promptInt("Entrance Year:");
+
+    auto member = new Member(id);
+    member
+      ->setEntranceYear(entranceYear)
+      ->setFirstName(firstName)
+      ->setLastName(lastName)
+      ->setId(id);
+
+    store->addMember(member);
+
+    return member;
 }
