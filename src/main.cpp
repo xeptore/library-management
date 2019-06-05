@@ -18,6 +18,7 @@ void addNewBook(Store *store);
 void borrowBookToMember(Store *store);
 void takeBackBookFromMember(Store *store);
 void listMemberBorrowedBooks(Store *store);
+void listBooks(Store *store);
 
 int main()
 {
@@ -70,6 +71,11 @@ int main()
             listMemberBorrowedBooks(store);
             break;
         }
+        case 6:
+        {
+            listBooks(store);
+            break;
+        }
         default:
             break;
         }
@@ -105,9 +111,9 @@ void help()
     println("[ " + yellow("2") + " ] " + "Add a new book to library");
     println("[ " + yellow("3") + " ] " + "Borrow a book to a member");
     println("[ " + yellow("4") + " ] " + "Take-back a book from a member");
-    println("[ " + yellow("5") + " ] " + "Show a list of borrowed books from a member");
+    println("[ " + yellow("5") + " ] " + "Show a list of borrowed books by a member");
     println("[ " + yellow("6") + " ] " + "Show a list of books in the library");
-    println("[ " + yellow("7") + " ] " + "Show a list of books in the library");
+    println("[ " + yellow("7") + " ] " + "Show a list of members in the library");
     println("[ " + grey("0") + " ] " + "Exit");
     cout << endl;
 }
@@ -295,4 +301,17 @@ void listMemberBorrowedBooks(Store *store)
         printBorrowedBookInformation(*book);
     }
     println();
+}
+
+void listBooks(Store *store)
+{
+    info("Listing all registered books in the library until now:");
+
+    auto books = store->getBooks();
+
+    for (auto book = books.begin(); book != books.end(); book++)
+    {
+        printRegisteredBookInformation(*book);
+        println();
+    }
 }

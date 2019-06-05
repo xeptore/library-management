@@ -42,3 +42,4 @@ void printNewMemberInformation(Member *member);
 void printNewBookInformation(Book *book);
 
 void printBorrowedBookInformation(Book *book);
+void printRegisteredBookInformation(Book *book);
