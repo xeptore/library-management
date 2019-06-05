@@ -1,5 +1,7 @@
 #include <iostream>
 #include <limits>
+#include <thread>
+#include <chrono>
 
 #include "book.h"
 #include "member.h"
@@ -85,6 +87,11 @@ int main()
         default:
             break;
         }
+
+        // sleeps for 3 seconds before reprinting help
+        {
+            this_thread::sleep_for(chrono::seconds(3));
+        }
     }
 
     return 0;
@@ -92,26 +99,24 @@ int main()
 
 void banner()
 {
-    cout << endl;
-    println("******************************************");
-    println("*                                        *");
-    println("*         Library Management App         *");
-    println("*                                        *");
-    println("******************************************");
-    cout << endl;
+    println();
+    println(yellow("****************************************************"));
+    println(yellow("*                                                  *"));
+    println(yellow("*              Library Management App              *"));
+    println(yellow("*                                                  *"));
+    println(yellow("****************************************************"));
 }
 
 void menuHeader()
 {
     cout << endl
+         << endl
          << endl;
-    println(darkRedBold("******************************************"));
-    cout << endl;
+    println(red("****************************************************"));
 }
 
 void help()
 {
-    cout << endl;
     println("Choose one the following options:");
     println("[ " + yellow("1") + " ] " + "Add a new member");
     println("[ " + yellow("2") + " ] " + "Add a new book to library");
@@ -297,11 +302,15 @@ void listMemberBorrowedBooks(Store *store)
 
     println();
     info("Member with ID (" + yellowBold(member->getId()) + ") has borrowed " + yellowBold(to_string(member->getBorrowedBooksCount())) + " books.");
-    println();
-    info("List of books:");
 
     auto books = member->getBorrowedBooks();
+    if (books.size() == 0)
+    {
+        println();
+        return;
+    }
 
+    info("List of books:");
     for (auto book = books.begin(); book != books.end(); book++)
     {
         printBorrowedBookInformation(*book);
@@ -311,9 +320,23 @@ void listMemberBorrowedBooks(Store *store)
 
 void listBooks(Store *store)
 {
-    info("Listing all registered books in the library until now:");
-
     auto books = store->getBooks();
+
+    if (books.size() == 0)
+    {
+        info("No book has been registered yet.");
+        println();
+        return;
+    }
+
+    string plural = "";
+    if (books.size() > 1)
+    {
+        plural = "s";
+    }
+
+    info("(" + yellowBold(to_string(books.size())) + ") book" + plural + " has been registered in the library.");
+    info("Listing all books:");
 
     for (auto book = books.begin(); book != books.end(); book++)
     {
@@ -324,9 +347,22 @@ void listBooks(Store *store)
 
 void listMembers(Store *store)
 {
-    info("Listing all registered books in the library until now:");
-
     auto members = store->getMembers();
+    if (members.size() == 0)
+    {
+        info("No member has been registered yet.");
+        println();
+        return;
+    }
+
+    string plural = "";
+    if (members.size() > 1)
+    {
+        plural = "s";
+    }
+
+    info("(" + yellowBold(to_string(members.size())) + ") member" + plural + " has been registered in the library.");
+    info("Listing all:");
 
     for (auto member = members.begin(); member != members.end(); member++)
     {
