@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-issue_parts = input("Github issue title:").split()
+issue_parts = input("Github issue title: ").split()
 issue_name = issue_parts[:-1]
 issue_id = issue_parts[len(issue_parts) - 1]
 if issue_id[0] == "#":
