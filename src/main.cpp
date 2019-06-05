@@ -9,6 +9,7 @@
 using namespace std;
 
 void banner();
+void menuHeader();
 void help();
 int getaction();
 
@@ -26,6 +27,7 @@ int main()
 
     while (true)
     {
+        menuHeader();
         help();
         int action = 0;
         while ((action = getaction()) == -1)
@@ -84,6 +86,14 @@ void banner()
     println("*         Library Management App         *");
     println("*                                        *");
     println("******************************************");
+    cout << endl;
+}
+
+void menuHeader()
+{
+    cout << endl
+         << endl;
+    println(darkRedBold("******************************************"));
     cout << endl;
 }
 
