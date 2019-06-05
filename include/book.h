@@ -37,5 +37,5 @@ public:
   Book *setAuthor(string author);
   Book *setTotal(uint total);
   void borrowTo(Member *member);
-  void unborrowFrom(Member *member);
+  void takeBackFrom(Member *member);
 };

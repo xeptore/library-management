@@ -108,7 +108,7 @@ void Book::borrowTo(Member *member)
     member->addBorrowedBook(this);
 }
 
-void Book::unborrowFrom(Member *member)
+void Book::takeBackFrom(Member *member)
 {
     for (auto m = this->borrowers.begin(); m != this->borrowers.end(); m++)
     {
