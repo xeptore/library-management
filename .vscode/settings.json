@@ -25,5 +25,8 @@
         "type_traits": "cpp",
         "typeinfo": "cpp",
         "string": "cpp"
-    }
+    },
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "xaver.clang-format",
+    "editor.formatOnType": true
 }

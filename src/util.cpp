@@ -25,9 +25,13 @@ void __log(const string severity, const string message)
     cout << __prepend() << "[ " << severity << " ]: " << message << endl;
 }
 
-string __colorize(const uint color, const string title)
+string __colorize(const uint color, const string title, bool bold = false)
 {
-    return "\x1b[1;38;5;" + to_string(color) + "m" + title + "\x1b[0m";
+    if (bold)
+    {
+        return "\x1b[1;38;5;" + to_string(color) + "m" + title + "\x1b[0m";
+    }
+    return "\x1b[0;38;5;" + to_string(color) + "m" + title + "\x1b[0m";
 }
 
 string red(const string title)
@@ -66,9 +70,45 @@ string blue(const string title)
     return __colorize(blue, title);
 }
 
+string redBold(const string str)
+{
+    const uint red = 9;
+    return __colorize(red, str, true);
+}
+
+string greenBold(const string str)
+{
+    const uint green = 10;
+    return __colorize(green, str, true);
+}
+
+string greyBold(const string str)
+{
+    const uint grey = 241;
+    return __colorize(grey, str, true);
+}
+
+string magentaBold(const string str)
+{
+    const uint magenta = 93;
+    return __colorize(magenta, str, true);
+}
+
+string yellowBold(const string str)
+{
+    const uint yellow = 226;
+    return __colorize(yellow, str, true);
+}
+
+string blueBold(const string str)
+{
+    const uint blue = 14;
+    return __colorize(blue, str, true);
+}
+
 void __prompt(const string question)
 {
-    cout << __prepend() << "[" << blue("?") << "] " << question << " ";
+    cout << __prepend() << "[" << blueBold("?") << "] " << blue(question) << " ";
 }
 
 int promptInt(const string question)
@@ -117,25 +157,25 @@ double promptDouble(const string question)
 void error(const string message)
 {
     const string title = "ERROR";
-    __log(red(title), message);
+    __log(redBold(title), message);
 }
 
 void info(const string message)
 {
     const string title = "INFO";
-    __log(magenta(title), message);
+    __log(magentaBold(title), message);
 }
 
 void ok(const string message)
 {
     const string title = "OK";
-    __log(green(title), message);
+    __log(greenBold(title), message);
 }
 
 void warn(const string message)
 {
     const string title = "WARN";
-    __log(yellow(title), message);
+    __log(yellowBold(title), message);
 }
 
 void print(const string message)
@@ -155,8 +195,8 @@ void println()
 
 void printNewMemberInformation(Member *member)
 {
-    println(blue("ID") + ":" + __space(15-2) + member->getId());
-    println(blue("First Name") + ":" + __space(15-10) + member->getFirstName());
-    println(blue("Last Name") + ":" + __space(15-9) + member->getLastName());
-    println(blue("Entrance Year") + ":" + __space(15-13) + to_string(member->getEntranceYear()));
+    println(blueBold("ID") + ":" + __space(15 - 2) + member->getId());
+    println(blueBold("First Name") + ":" + __space(15 - 10) + member->getFirstName());
+    println(blueBold("Last Name") + ":" + __space(15 - 9) + member->getLastName());
+    println(blueBold("Entrance Year") + ":" + __space(15 - 13) + to_string(member->getEntranceYear()));
 }
