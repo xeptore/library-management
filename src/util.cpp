@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "member.h"
+#include "book.h"
 
 using namespace std;
 
@@ -199,4 +200,13 @@ void printNewMemberInformation(Member *member)
     println(blueBold("First Name") + ":" + __space(15 - 10) + member->getFirstName());
     println(blueBold("Last Name") + ":" + __space(15 - 9) + member->getLastName());
     println(blueBold("Entrance Year") + ":" + __space(15 - 13) + to_string(member->getEntranceYear()));
+}
+
+void printNewBookInformation(Book *book)
+{
+    println(blueBold("Name") + ":" + __space(15 - 4) + book->getName());
+    println(blueBold("Author Name") + ":" + __space(15 - 11) + book->getAuthor());
+    println(blueBold("ISBN") + ":" + __space(15 - 4) + book->getISBN());
+    println(blueBold("Publish Year") + ":" + __space(15 - 12) + to_string(book->getPublishYear()));
+    println(blueBold("Total") + ":" + __space(15 - 5) + to_string(book->getTotal()));
 }
