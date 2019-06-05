@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 
+#include "member.h"
+
 using namespace std;
 
 int promptInt(const string question);
@@ -13,8 +15,15 @@ void info(const string message);
 void ok(const string message);
 void warn(const string message);
 
+void print(const string message);
+void println(const string message);
+void println();
+
 string red(const string str);
 string green(const string str);
+string grey(const string str);
 string magenta(const string str);
 string yellow(const string str);
 string blue(const string str);
+
+void printNewMemberInformation(Member *member);
