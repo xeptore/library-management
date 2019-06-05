@@ -243,3 +243,14 @@ void printBorrowedBookInformation(Book *book)
     println(pinkBold("Publish Year") + ":" + __space(15 - 12) + to_string(book->getPublishYear()));
     println(pinkBold("Total") + ":" + __space(15 - 5) + to_string(book->getTotal()));
 }
+
+void printRegisteredBookInformation(Book *book)
+{
+    println(greyBold("Name") + ":" + __space(15 - 4) + book->getName());
+    println(greyBold("Author Name") + ":" + __space(15 - 11) + book->getAuthor());
+    println(greyBold("ISBN") + ":" + __space(15 - 4) + book->getISBN());
+    println(greyBold("Publish Year") + ":" + __space(15 - 12) + to_string(book->getPublishYear()));
+    println(greyBold("Total") + ":" + __space(15 - 5) + to_string(book->getTotal()));
+    println(greyBold("Borrowed") + ":" + __space(15 - 8) + to_string(book->getTotal() - book->getRemainingCount()));
+    println(greyBold("Remaining") + ":" + __space(15 - 9) + to_string(book->getRemainingCount()));
+}
