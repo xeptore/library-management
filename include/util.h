@@ -36,3 +36,5 @@ string blueBold(const string str);
 
 void printNewMemberInformation(Member *member);
 void printNewBookInformation(Book *book);
+
+void printBorrowedBookInformation(Book *book);

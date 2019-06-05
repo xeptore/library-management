@@ -210,3 +210,12 @@ void printNewBookInformation(Book *book)
     println(blueBold("Publish Year") + ":" + __space(15 - 12) + to_string(book->getPublishYear()));
     println(blueBold("Total") + ":" + __space(15 - 5) + to_string(book->getTotal()));
 }
+
+void printBorrowedBookInformation(Book *book)
+{
+    println(magentaBold("Name") + ":" + __space(15 - 4) + book->getName());
+    println(magentaBold("Author Name") + ":" + __space(15 - 11) + book->getAuthor());
+    println(magentaBold("ISBN") + ":" + __space(15 - 4) + book->getISBN());
+    println(magentaBold("Publish Year") + ":" + __space(15 - 12) + to_string(book->getPublishYear()));
+    println(magentaBold("Total") + ":" + __space(15 - 5) + to_string(book->getTotal()));
+}
