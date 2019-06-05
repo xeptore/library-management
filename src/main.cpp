@@ -14,6 +14,7 @@ int getaction();
 
 Member *addNewMember(Store *store);
 void borrowBookToMember(Store *store);
+void takeBackBookFromMember(Store *store);
 
 int main()
 {
@@ -60,6 +61,10 @@ int main()
         {
             borrowBookToMember(store);
         }
+        case 4:
+        {
+            takeBackBookFromMember(store);
+        }
         default:
             break;
         }
@@ -86,7 +91,7 @@ void help()
     println("[ " + yellow("1") + " ] " + "Add a new member");
     println("[ " + yellow("2") + " ] " + "Add a new book to library");
     println("[ " + yellow("3") + " ] " + "Borrow a book to a member");
-    println("[ " + yellow("4") + " ] " + "Unborrow a book from a member");
+    println("[ " + yellow("4") + " ] " + "Take-back a book from a member");
     println("[ " + yellow("5") + " ] " + "Show a list of borrowed books from a member");
     println("[ " + yellow("6") + " ] " + "Show a list of books in the library");
     println("[ " + yellow("7") + " ] " + "Show a list of books in the library");
@@ -162,14 +167,48 @@ void borrowBookToMember(Store *store)
     book->borrowTo(member);
 
     ok("Book with ISBN (" + book->getISBN() + ")");
-    ok("has been successfully borrowed to member (" + member->getId() + ")");
+    ok("has been successfully borrowed to member with ID (" + member->getId() + ").");
+
     string s = "";
     if (book->getRemainingCount() > 1)
     {
         s = "s";
     }
 
-    ok("number of remaining unborrowed book" + s + ": " + to_string(book->getRemainingCount()));
+    ok("Number of remaining book" + s + ": " + to_string(book->getRemainingCount()));
+
+    return;
+}
+
+void takeBackBookFromMember(Store *store)
+{
+    auto memberId = promptString("Enter member ID:");
+    auto member = store->findMemberById(memberId);
+    if (member == NULL)
+    {
+        error("Member with entered ID is not registerd.");
+        return;
+    }
+
+    auto isbn = promptString("Enter book ISBN:");
+    auto book = store->findBookByISBN(isbn);
+    if (book == NULL)
+    {
+        error("Could not find book with entered ISBN.");
+        return;
+    }
+
+    if (!member->hasBorrowedBook(book))
+    {
+        error("Book was not borrowed to member.");
+        return;
+    }
+
+    book->takeBackFrom(member);
+
+    ok("Book with ISBN (" + book->getISBN() + ")");
+    ok("has been successfully taken back from member with ID (" + member->getId() + ").");
+    ok("Number of book in library:" + to_string(book->getRemainingCount()));
 
     return;
 }
