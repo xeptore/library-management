@@ -1,5 +1,5 @@
-#include<vector>
-#include<algorithm>
+#include <vector>
+#include <algorithm>
 
 #include "book.h"
 #include "member.h"
@@ -7,11 +7,10 @@
 
 using namespace std;
 
-
 Store::Store()
 {
-    this->members = vector<Member*>();
-    this->books = vector<Book*>();
+    this->members = vector<Member *>();
+    this->books = vector<Book *>();
 }
 
 Store::~Store() {}
@@ -70,12 +69,12 @@ bool Store::bookExists(string isbn)
     return false;
 }
 
-vector<Member*> Store::getMembers()
+vector<Member *> Store::getMembers()
 {
     return this->members;
 }
 
-vector<Book*> Store::getBooks()
+vector<Book *> Store::getBooks()
 {
     return this->books;
 }
@@ -89,4 +88,3 @@ void Store::addMember(Member *member)
 {
     this->members.push_back(member);
 }
-

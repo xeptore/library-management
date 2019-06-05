@@ -4,11 +4,10 @@
 
 using namespace std;
 
-
 Book::Book()
 {
     this->total = 0;
-    this->borrowers = vector<Member*>();
+    this->borrowers = vector<Member *>();
 }
 
 Book::~Book() {}
@@ -38,7 +37,7 @@ uint Book::getTotal()
     return this->total;
 }
 
-vector<Member*> Book::getBorrowers()
+vector<Member *> Book::getBorrowers()
 {
     return this->borrowers;
 }
@@ -72,7 +71,6 @@ bool Book::canBeBorrowedTo(Member *member)
 
     return true;
 }
-
 
 Book *Book::setName(string name)
 {

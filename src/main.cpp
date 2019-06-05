@@ -14,7 +14,8 @@ int getaction();
 
 Member *addNewMember(Store *store);
 
-int main() {
+int main()
+{
     auto store = new Store();
 
     banner();
@@ -29,27 +30,31 @@ int main() {
 
     switch (action)
     {
-        case 0: {
-            exit(0);
-        }
-        case 1:
+    case 0:
+    {
+        exit(0);
+    }
+    case 1:
+    {
+        auto member = addNewMember(store);
+        if (member != NULL)
         {
-            auto member = addNewMember(store);
-            if (member != NULL)
-            {
-                println();
-                ok("New member added successfully:");
-                printNewMemberInformation(member);
-            }
-            else
-            {
-                error("Unable to register member.");
-                error("Try again, please.");
-            }
-            break;
+            println();
+            ok("New member added successfully:");
+            printNewMemberInformation(member);
         }
-        default:
-            break;
+        else
+        {
+            error("Unable to register member.");
+            error("Try again, please.");
+        }
+        break;
+    }
+    case 3:
+    {
+    }
+    default:
+        break;
     }
     return 0;
 }
@@ -76,7 +81,7 @@ void help()
     println("[ " + yellow("5") + " ] " + "Show a list of borrowed books from a member");
     println("[ " + yellow("6") + " ] " + "Show a list of books in the library");
     println("[ " + yellow("7") + " ] " + "Show a list of books in the library");
-    println("[ " + grey("0")   + " ] " + "Exit");
+    println("[ " + grey("0") + " ] " + "Exit");
     cout << endl;
 }
 
@@ -105,14 +110,13 @@ Member *addNewMember(Store *store)
     firstName = promptString("First Name:");
     lastName = promptString("Last Name:");
     id = promptString("Student ID:");
-    entranceYear = (uint) promptInt("Entrance Year:");
+    entranceYear = (uint)promptInt("Entrance Year:");
 
     auto member = new Member(id);
-    member
-      ->setEntranceYear(entranceYear)
-      ->setFirstName(firstName)
-      ->setLastName(lastName)
-      ->setId(id);
+    member->setEntranceYear(entranceYear)
+        ->setFirstName(firstName)
+        ->setLastName(lastName)
+        ->setId(id);
 
     store->addMember(member);
 

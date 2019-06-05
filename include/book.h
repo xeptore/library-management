@@ -8,34 +8,34 @@ class Member;
 
 class Book
 {
-  private:
-    string name;
-    uint publishYear;
-    string author;
-    string isbn;
-    uint total;
-    vector<Member*> borrowers;
+private:
+  string name;
+  uint publishYear;
+  string author;
+  string isbn;
+  uint total;
+  vector<Member *> borrowers;
 
-  public:
-    Book();
-    ~Book();
+public:
+  Book();
+  ~Book();
 
-    string getName();
-    uint getPublishYear();
-    string getAuthor();
-    string getISBN();
-    uint getTotal();
-    vector<Member*> getBorrowers();
-    uint getBorrowedCount();
-    uint getRemainingCount();
-    bool canBeBorrowed();
-    bool canBeBorrowedTo(Member *member);
+  string getName();
+  uint getPublishYear();
+  string getAuthor();
+  string getISBN();
+  uint getTotal();
+  vector<Member *> getBorrowers();
+  uint getBorrowedCount();
+  uint getRemainingCount();
+  bool canBeBorrowed();
+  bool canBeBorrowedTo(Member *member);
 
-    Book *setName(string name);
-    Book *setPublishYear(uint publishYear);
-    Book *setISBN(string isbn);
-    Book *setAuthor(string author);
-    Book *setTotal(uint total);
-    void borrowTo(Member *member);
-    void unborrowFrom(Member *member);
+  Book *setName(string name);
+  Book *setPublishYear(uint publishYear);
+  Book *setISBN(string isbn);
+  Book *setAuthor(string author);
+  Book *setTotal(uint total);
+  void borrowTo(Member *member);
+  void unborrowFrom(Member *member);
 };

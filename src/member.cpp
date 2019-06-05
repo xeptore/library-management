@@ -12,7 +12,7 @@ using namespace std;
 Member::Member(string id)
 {
     this->id = id;
-    this->borrowedBooks = vector<Book*>();
+    this->borrowedBooks = vector<Book *>();
 }
 
 Member::~Member() {}
@@ -37,7 +37,7 @@ string Member::getId()
     return this->id;
 }
 
-vector<Book*> Member::getBorrowedBooks()
+vector<Book *> Member::getBorrowedBooks()
 {
     return this->borrowedBooks;
 }

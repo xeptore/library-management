@@ -155,8 +155,8 @@ void println()
 
 void printNewMemberInformation(Member *member)
 {
-    println(blue("ID") + ":" + __space(15-2) + member->getId());
-    println(blue("First Name") + ":" + __space(15-10) + member->getFirstName());
-    println(blue("Last Name") + ":" + __space(15-9) + member->getLastName());
-    println(blue("Entrance Year") + ":" + __space(15-13) + to_string(member->getEntranceYear()));
+    println(blue("ID") + ":" + __space(15 - 2) + member->getId());
+    println(blue("First Name") + ":" + __space(15 - 10) + member->getFirstName());
+    println(blue("Last Name") + ":" + __space(15 - 9) + member->getLastName());
+    println(blue("Entrance Year") + ":" + __space(15 - 13) + to_string(member->getEntranceYear()));
 }
