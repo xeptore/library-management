@@ -2,6 +2,7 @@
 #include <string>
 
 #include "member.h"
+#include "book.h"
 
 using namespace std;
 
@@ -34,3 +35,4 @@ string yellowBold(const string str);
 string blueBold(const string str);
 
 void printNewMemberInformation(Member *member);
+void printNewBookInformation(Book *book);
