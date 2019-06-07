@@ -31,7 +31,6 @@ int main()
 
     while (true)
     {
-        menuHeader();
         help();
         int action = 0;
         while ((action = getaction()) == -1)
@@ -117,6 +116,7 @@ void menuHeader()
 
 void help()
 {
+    menuHeader();
     println("Choose one the following options:");
     println("[ " + yellow("1") + " ] " + "Add a new member");
     println("[ " + yellow("2") + " ] " + "Add a new book to library");
